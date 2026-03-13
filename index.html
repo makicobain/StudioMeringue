@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Studio Meringué — En construction</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@200;300;400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    min-height: 100vh;
+    background: #F7F4EE;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Jost', sans-serif;
+    overflow: hidden;
+  }
+
+  .noise {
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 0;
+  }
+
+  .deco-circle {
+    position: fixed;
+    border-radius: 50%;
+    background: #E8E0D5;
+    z-index: 0;
+  }
+  .deco-circle.a { width: 420px; height: 420px; top: -140px; right: -100px; opacity: 0.55; }
+  .deco-circle.b { width: 260px; height: 260px; bottom: -80px; left: -60px; opacity: 0.4; }
+
+  .deco-line {
+    position: fixed;
+    background: #C8BFB0;
+    z-index: 0;
+  }
+  .deco-line.h1 { width: 100%; height: 0.5px; top: 18%; }
+  .deco-line.h2 { width: 100%; height: 0.5px; bottom: 18%; }
+  .deco-line.v1 { height: 100%; width: 0.5px; left: 8%; }
+  .deco-line.v2 { height: 100%; width: 0.5px; right: 8%; }
+
+  main {
+    position: relative; z-index: 1;
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 560px;
+  }
+
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-weight: 200;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: #9A8F80;
+    margin-bottom: 2.5rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.2s forwards;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: clamp(3.2rem, 8vw, 5.2rem);
+    line-height: 1.05;
+    color: #2C2820;
+    letter-spacing: -0.01em;
+    opacity: 0;
+    animation: fadeUp 1s ease 0.4s forwards;
+  }
+
+  .logo em {
+    font-style: italic;
+    color: #7A6E5F;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 2rem auto;
+    width: 180px;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.6s forwards;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: #C8BFB0;
+  }
+  .divider-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: #C8BFB0;
+  }
+
+  .tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 1.25rem;
+    color: #7A6E5F;
+    letter-spacing: 0.02em;
+    margin-bottom: 3rem;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.75s forwards;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #EDE9E2;
+    border: 0.5px solid #C8BFB0;
+    border-radius: 100px;
+    padding: 8px 20px;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #7A6E5F;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 0.9s forwards;
+  }
+
+  .status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #B5A898;
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  .contact {
+    margin-top: 3rem;
+    font-size: 11px;
+    font-weight: 300;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #B5A898;
+    opacity: 0;
+    animation: fadeUp 0.8s ease 1.1s forwards;
+  }
+
+  .contact a {
+    color: #7A6E5F;
+    text-decoration: none;
+    border-bottom: 0.5px solid #C8BFB0;
+    padding-bottom: 1px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact a:hover { color: #2C2820; border-color: #7A6E5F; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.3); }
+  }
+</style>
+</head>
+<body>
+<div class="noise"></div>
+<div class="deco-circle a"></div>
+<div class="deco-circle b"></div>
+<div class="deco-line h1"></div>
+<div class="deco-line h2"></div>
+<div class="deco-line v1"></div>
+<div class="deco-line v2"></div>
+
+<main>
+  <p class="eyebrow">Agence de graphisme · Nice</p>
+
+  <h1 class="logo">Studio<br><em>Meringué</em></h1>
+
+  <div class="divider"><div class="divider-dot"></div></div>
+
+  <p class="tagline">Quelque chose de beau se prépare.</p>
+
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Site en construction
+  </div>
+
+  <p class="contact">
+    En attendant — <a href="mailto:hello@studiomeringue.fr">hello@studiomeringue.fr</a>
+  </p>
+</main>
+</body>
+</html>
