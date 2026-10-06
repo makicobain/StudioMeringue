@@ -7,7 +7,7 @@ const teamMembers = [
     id: 1,
     name: "Emmanuelle Guérin",
     role: "Fondatrice & UI/UX Designer",
-    bio: "Créative et curieuse, Emmanuelle s'est d'abord formée en graphisme, notamment en identités visuelles et en design interfaces. Aujourd'hui, elle suit un Master en UX/UI Design en parallèle d'un contrat en alternance et de son activité indépendante au sein du Studio Meringué.",
+    bio: "Créative et curieuse, Emmanuelle s'est d'abord formée en graphisme, notamment en identités visuelles et en design interfaces. Aujourd'hui diplomée d'un Master en UX/UI design, Emmanuelle est ouverte à toute opportunité professionnelle.",
     photo: "/profile.jpg",
     initials: "EG",
     linkedin: "https://www.linkedin.com/in/emmanuelle-guerin/",
